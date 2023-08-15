@@ -31,7 +31,7 @@ export default {
   methods: {
     async fetchVideos() {
       try {
-        const response = await axios.get('http://localhost:5000/get_uploaded_videos');
+        const response = await axios.get('http://127.0.0.1:5000/get_uploaded_videos');
         this.uploadedVideos = response.data.videos;
       } catch (error) {
         console.error(error);
@@ -54,7 +54,7 @@ export default {
       formData.append('thumbnail', this.selectedThumbnailFile);
 
       try {
-        await axios.post('http://localhost:5000/upload', formData);
+        await axios.post('http://127.0.0.1:5000/upload', formData);
         this.fetchVideos();
         alert('Files uploaded successfully');
       } catch (error) {
@@ -64,7 +64,7 @@ export default {
     },
    
     getVideoUrl(videoName) {
-      return `http://localhost:5000/videos/${videoName}`;
+      return `http://127.0.0.1:5000/videos/${videoName}`;
     },
     async addSubtitle() {
       if (!this.selectedVideoFile) {
@@ -73,7 +73,7 @@ export default {
       }
 
       try {
-        await axios.post('http://localhost:5000/add_subtitle', {
+        await axios.post('http://127.0.0.1:5000/add_subtitle', {
           videoName: this.selectedVideoFile.name,
           text: this.subtitleText,
           startTime: this.subtitleStartTime,

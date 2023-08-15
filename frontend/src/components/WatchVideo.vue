@@ -40,7 +40,7 @@ export default {
   methods: {
     async fetchVideos() {
       try {
-        const response = await axios.get('http://localhost:5000/get_uploaded_videos');
+        const response = await axios.get('http://127.0.0.1:5000/get_uploaded_videos');
         this.videos = response.data.videos;
       } catch (error) {
         console.error(error);
@@ -48,18 +48,18 @@ export default {
     },
     getThumbnailUrl(thumbnail) {
       return thumbnail
-        ? `http://localhost:5000/thumbnails/${thumbnail}`
+        ? `http://127.0.0.1:5000/thumbnails/${thumbnail}`
         : require('@/assets/default-thumbnail.jpg'); // Path to default thumbnail
     },
     getVideoUrl(videoName) {
-      return `http://localhost:5000/videos/${videoName}`;
+      return `http://127.0.0.1:5000/videos/${videoName}`;
     },
     playVideo(video) {
       this.selectedVideo = video;
     },
    async fetchSubtitles(videoName) {
       try {
-        const response = await axios.get(`http://localhost:5000/get_subtitles/${videoName}`);
+        const response = await axios.get(`http://127.0.0.1:5000/get_subtitles/${videoName}`);
         this.subtitles = response.data.subtitles;
         // console.log('Subtitles:', this.subtitles);
       } catch (error) {
