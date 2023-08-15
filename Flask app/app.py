@@ -13,9 +13,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SUBTITLES_FOLDER'] = SUBTITLES_FOLDER
 app.config['THUMBNAIL_FOLDER'] = THUMBNAIL_FOLDER
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
+@app.route('/')
+def index():
+    return render_template('index.html')
+    
 if not os.path.exists(app.config['SUBTITLES_FOLDER']):
     os.makedirs(app.config['SUBTITLES_FOLDER'])
 
